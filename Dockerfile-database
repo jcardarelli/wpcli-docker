@@ -1,0 +1,7 @@
+FROM wangxian/alpine-mysql
+RUN apk update && \
+  apk upgrade --no-self-upgrade --available --simulate && \
+  apk upgrade --no-self-upgrade --available
+
+ENTRYPOINT ["mysql"]
+CMD ["--help"]
