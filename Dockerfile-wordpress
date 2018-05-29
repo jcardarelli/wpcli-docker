@@ -1,16 +1,16 @@
 FROM php:7.0
 RUN apt-get -qq update && apt-get install -y less
 
-ARG wp_url
-ARG wp_title
-ARG wp_admin_user
-ARG wp_admin_pass
 ARG wp_admin_email
-ARG wp_dir
-ARG wp_user
-ARG wp_group
-ARG wp_db_user
+ARG wp_admin_pass
+ARG wp_admin_user
 ARG wp_db_name
+ARG wp_db_user
+ARG wp_dir
+ARG wp_group
+ARG wp_title
+ARG wp_url
+ARG wp_user
 
 RUN groupadd ${wp_group}
 RUN useradd -r -u 1001 -g ${wp_group} ${wp_user}
