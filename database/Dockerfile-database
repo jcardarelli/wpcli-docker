@@ -1,7 +1,7 @@
 FROM wangxian/alpine-mysql
-RUN apk update && \
-  apk upgrade --no-self-upgrade --available --simulate && \
-  apk upgrade --no-self-upgrade --available
+
+COPY database/init_db.sh .
+RUN init_db.sh
 
 ENTRYPOINT ["mysql"]
 CMD ["--help"]
