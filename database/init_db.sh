@@ -1,0 +1,4 @@
+#!/bin/bash
+mysql -uroot -p"${MYSQL_ROOT_PASSWORD}" --execute "CREATE DATABASE ${MYSQL_DATABASE}"
+mysql -uroot -p"${MYSQL_ROOT_PASSWORD}" --execute "GRANT ALL PRIVILEGES ON '${MYSQL_DATABASE}.*' TO '${MYSQL_USER}'@'127.0.0.1' IDENTIFIED BY '${MYSQL_PASSWORD}'"
+mysql -uroot -p"${MYSQL_ROOT_PASSWORD}" --execute "FLUSH PRIVILEGES"
