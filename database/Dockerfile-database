@@ -1,7 +1,17 @@
-FROM wangxian/alpine-mysql
+FROM mysql
 
-COPY database/init_db.sh .
-RUN init_db.sh
+ARG mysql_user
+WORKDIR /home/${mysql_user}
+
+RUN mkdir -p /home/${mysql_user}
+COPY database/init_db.sh /home/${mysql_user}/
+RUN chown ${mysql_user} /home/${mysql_user}/init_db.sh
+
+RUN chmod +x /home/${mysql_user}/init_db.sh
+RUN ls -l /home/${mysql_user}/init_db.sh
+
+USER ${mysql_user}
+RUN /bin/sh /home/${mysql_user}/init_db.sh
 
 ENTRYPOINT ["mysql"]
 CMD ["--help"]
