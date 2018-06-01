@@ -1,4 +1,4 @@
-FROM mysql
+FROM mysql-server:latest
 
 ARG mysql_user
 WORKDIR /home/${mysql_user}
